@@ -1,6 +1,6 @@
 Here is a summarized version of the steps taken to set up the BetterSpeaker environment using conda and pip:
 
-##Activate the Conda Environment:
+## Activate the Conda Environment:
 
 sh
 Copy code
@@ -14,7 +14,7 @@ Copy code
 conda install -r requirements
 ```
 
-##Install pip using Conda:
+## Install pip using Conda:
 
 Copy code
 ```
@@ -22,7 +22,7 @@ conda install pip
 ```
 This results in the installation of various dependencies including pip, python, setuptools, and other system packages.
 User consented to the installation of 36.5 MB of packages.
-##Install Packages from requirements.txt File Using pip:
+## Install Packages from requirements.txt File Using pip:
 
 sh
 Copy code

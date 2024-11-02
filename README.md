@@ -1,5 +1,12 @@
 Here is a summarized version of the steps taken to set up the BetterSpeaker environment using conda and pip:
 
+
+Make sure you have Conda, Python and Docker installed:
+## Create the Conda Enviornment:
+Make the environment
+```bash
+conda create --name BetterSpeak
+```
 ## Activate the Conda Environment:
 
 Initialize the conda environment:

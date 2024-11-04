@@ -2,3 +2,12 @@ streamlit
 streamlit-webrtc
 opencv-python
 pyaudio
+protobuf==5.26.1
+setuptools==70.0.0
+grpcio==1.67.1
+grpcio-tools==1.67.1
+matplotlib
+librosa
+mediapipe
+python-dotenv
+requests

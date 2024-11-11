@@ -40,9 +40,20 @@ Installation begins for packages listed in the requirements.txt file, such as st
 Riva ASR NIM APIs provide easy access to state-of-the-art automatic speech recognition (ASR) models, capable of transcribing spoken English with exceptional accuracy. It is a XXL version of the FastConformer-CTC model. Riva ASR NIM models are built on the NVIDIA software platform, incorporating CUDA, TensorRT, and Triton to offer out-of-the-box GPU acceleration.
 
 Copy Code and get API Key
-``` bash
-$ docker login nvcr.io
-Username: $oauthtoken
-Password: <PASTE_API_KEY_HERE>
+Install Riva Python Client
+```bash
+$ pip install -r https://raw.githubusercontent.com/nvidia-riva/python-clients/main/requirements.txt
+$ pip install --force-reinstall git+https://github.com/nvidia-riva/python-clients.git
 ```
+
+Download Python Client. Make sure this repo is inside the repo of BetterSpeak
+```bash
+$ git clone https://github.com/nvidia-riva/python-clients.git
+```
+
+## Credits:
+
+Eye Tracking Repo: https://github.com/antoinelame/GazeTracking
+Computer Vision with Streamlit: https://www.youtube.com/watch?v=wyWmWaXapmI
+
 

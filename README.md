@@ -1,3 +1,10 @@
+# BetterSpeak
+
+Artificial Intelligence (AI) excels at identifying patterns in data and leveraging these patterns to make predictions, perform analyses, and generate insights or outputs. AI has numerous practical applications across multiple sectors, adapting to societal needs and challenges. An commonly overlooked challenge is the struggle to communicate effectively. The ability to effectively work with other teammates, deliver stunning presentations, network with professionals, have meaningful conversations, or just make friends is an important skill in life. However, many people struggle and miss greatly beneficial opportunities or relationships. They struggle to develop effective communication skills, and many resources are either pricy, not personalized, or inadequate. Artificial intelligence is able to solve this issue through its adaptability, feedback, and knowledge. This application can personalize to each student’s needs, provide feedback, and simulate events to improve communication.
+
+
+
+# Installation
 Here is a summarized version of the steps taken to set up the BetterSpeaker environment using conda and pip:
 
 

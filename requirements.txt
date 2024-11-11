@@ -1,3 +1,4 @@
+tornado>=6.0
 streamlit
 streamlit-webrtc
 opencv-python
@@ -11,3 +12,14 @@ librosa
 mediapipe
 python-dotenv
 requests
+supabase
+
+
+langchain_chroma
+langchain
+langchain_openai
+langchain_text_splitters
+langchain_community
+pypdf
+faiss-cpu
+ploty

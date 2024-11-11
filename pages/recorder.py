@@ -1,21 +1,14 @@
 import wave 
 import sys
-import os
-from dotenv import load_dotenv
+
+
 
 #Audio Libraries
 import pyaudio
 import streamlit as st
-import subprocess
 
 #Video libraries
 import cv2
-
-
-
-load_dotenv()
-
-NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
 
 #Audio Recorder
 st.sidebar.markdown("## Audio Recorder")
@@ -23,33 +16,27 @@ st.sidebar.markdown("## Audio Recorder")
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
-RATE = 30720
-RECORD_SECONDS = 5
-WAVE_OUTPUT_FILENAME = "output.wav"
+RATE = 44100
+RECORD_SECONDS = 30
+WAVE_OUTPUT_FILENAME = "assets/output.wav"
 
-#Define NVIDIA Command for transcription
-command = [
-    "python", "python-clients/scripts/asr/transcribe_file.py",
-    "--server", "grpc.nvcf.nvidia.com:443",
-    "--use-ssl",
-    "--metadata", "function-id", "1598d209-5e27-4d3c-8079-4751568b1081",
-    "--metadata", "authorization", f"Bearer {NVIDIA_API_KEY}",
-    "--language-code", "en-US",
-    "--input-file", "assets/output.wav"
-]
+
+
 
 #Gets the audio recording
-def record_audio():
+def record():
+    
+    video_stream = st.empty()
+
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        video_stream = st.empty()
     p = pyaudio.PyAudio()
     
     video = cv2.VideoCapture(0)
    
-     
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('output.avi', fourcc,20.0, (640,480))
-    
-
-    video_stream = st.empty()
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter('assets/output.mp4', fourcc, 30.0, (640,480))
     
     
     if p.get_default_input_device_info() is None:
@@ -70,14 +57,16 @@ def record_audio():
         ret, frame = video.read()
         if not ret:
             break
-        video_stream.image(frame, channels="BGR")
-        
+       
+        video_stream.image(frame, channels="BGR") 
         out.write(frame)
+        
         data = stream.read(CHUNK)
         frames.append(data)
-        seconds = (i* RATE/CHUNK)/int(RATE / CHUNK * RECORD_SECONDS)
+        
+        seconds = int((i* RECORD_SECONDS)/int(RATE / CHUNK * RECORD_SECONDS))
         recording_bar.progress(i / int(RATE / CHUNK * RECORD_SECONDS),text=f"{seconds}/{RECORD_SECONDS}")
-                
+        
     
     print("Finished recording")
     stream.stop_stream()
@@ -94,16 +83,30 @@ def record_audio():
     sound_file.writeframes(b''.join(frames))
     sound_file.close()
 
-    print("Transcribing...")
-    result = subprocess.run(command, capture_output=True,text=True)
-    st.write("Standard output:", result.stdout)
-    
-    st.write("Standard error:", result.stderr)
-    print("Transcription complete")
+
 
 
 st.markdown("---")
 #Streamlit Process
-st.title("Audio Recorder")
+
+title = st.title("Recorder")
+
 recording_bar = st.progress(0)
-st.button("Record", key="rec", on_click=record_audio)
+st.button("Record", key="rec", on_click=record)    
+
+
+
+
+st.markdown("""
+<style>
+    .video_stream {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>""",unsafe_allow_html=True)
